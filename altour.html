@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT ALTOUR ZAYD AND TRAVEL - Umroh, Tiket & Visa Resmi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#111e38',
+                            900: '#0a1122',
+                        },
+                        gold: {
+                            500: '#d4af37',
+                            600: '#aa8c2c',
+                            400: '#e6ca65'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(10, 17, 34, 0.85), rgba(17, 30, 56, 0.9)), url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-gold-500 selection:text-white">
+
+    <!-- Notification / Modal Message Box (Replacement for alert) -->
+    <div id="customModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 hidden backdrop-blur-sm transition-all duration-300">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl border border-gold-500/30 text-center transform scale-95 transition-transform duration-300" id="modalContent">
+            <div class="w-16 h-16 bg-gold-500/10 text-gold-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-circle-check" id="modalIcon"></i>
+            </div>
+            <h3 class="font-cinzel text-2xl font-bold text-navy-900 mb-2" id="modalTitle">Pemberitahuan</h3>
+            <p class="text-gray-600 mb-6" id="modalMessage">Pesan informasi di sini.</p>
+            <button onclick="closeModal()" class="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-white font-semibold rounded-xl shadow-lg shadow-gold-500/20 transition-all">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="bg-navy-900 text-gold-400 text-xs sm:text-sm py-2 px-4 border-b border-gold-500/20">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fa-solid fa-file-shield mr-1"></i> AHU: AHU-0069557.AH.01.01.TAHUN 2026</span>
+                <span class="hidden md:inline">|</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-id-card mr-1"></i> NIB: 2908260029471</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/628978270092" target="_blank" class="hover:text-white transition flex items-center gap-1">
+                    <i class="fa-brands fa-whatsapp text-green-400"></i> 0897-8270-092
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur-md border-b border-gold-500/20 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo & Name -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 p-0.5 shadow-md flex items-center justify-center">
+                    <div class="w-full h-full bg-navy-900 rounded-[10px] flex items-center justify-center text-white font-cinzel font-bold text-xl">
+                        AZ
+                    </div>
+                </div>
+                <div>
+                    <h1 class="font-cinzel font-bold text-white tracking-wider text-lg sm:text-xl leading-none">ALTOUR</h1>
+                    <p class="text-[10px] sm:text-xs text-gold-400 tracking-widest uppercase font-semibold mt-0.5">Zayd And Travel</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-gray-200">
+                <a href="#beranda" class="hover:text-gold-400 transition">Beranda</a>
+                <a href="#tentang" class="hover:text-gold-400 transition">Tentang Kami</a>
+                <a href="#layanan" class="hover:text-gold-400 transition">Layanan</a>
+                <a href="#paket" class="hover:text-gold-400 transition">Paket Umroh</a>
+                <a href="#pemeriksaan" class="hover:text-gold-400 transition">Cek Tiket & Visa</a>
+                <a href="#kontak" class="hover:text-gold-400 transition">Kontak</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden lg:block">
+                <a href="https://wa.me/628978270092?text=Halo%20PT%20Altour%20Zayd%20And%20Travel,%20saya%20ingin%20berkonsultasi%20mengenai%20perjalanan%20ibadah%20dan%20layanan." target="_blank" class="px-5 py-2.5 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-900 font-bold rounded-xl shadow-lg shadow-gold-500/20 transition-all flex items-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi Kami
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="lg:hidden text-gold-400 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-navy-900 border-t border-gold-500/20 px-4 pt-3 pb-5 space-y-3">
+            <a href="#beranda" class="block text-gray-200 hover:text-gold-400 py-1 transition">Beranda</a>
+            <a href="#tentang" class="block text-gray-200 hover:text-gold-400 py-1 transition">Tentang Kami</a>
+            <a href="#layanan" class="block text-gray-200 hover:text-gold-400 py-1 transition">Layanan</a>
+            <a href="#paket" class="block text-gray-200 hover:text-gold-400 py-1 transition">Paket Umroh</a>
+            <a href="#pemeriksaan" class="block text-gray-200 hover:text-gold-400 py-1 transition">Cek Tiket & Visa</a>
+            <a href="#kontak" class="block text-gray-200 hover:text-gold-400 py-1 transition">Kontak</a>
+            <div class="pt-2">
+                <a href="https://wa.me/628978270092" target="_blank" class="w-full py-3 bg-gold-500 text-navy-900 font-bold rounded-xl text-center block shadow-md">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp 0897-8270-092
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero-bg relative py-24 sm:py-32 flex items-center justify-center text-white text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+            <span class="inline-block py-1 px-4 rounded-full bg-gold-500/20 border border-gold-500/40 text-gold-400 text-xs sm:text-sm font-semibold tracking-wider uppercase mb-6 backdrop-blur-sm">
+                PT ALTOUR ZAYD AND TRAVEL
+            </span>
+            <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
+                Gerbang Menuju Perjalanan <span class="text-gold-400">Ibadah Suci</span> & Wisata Dunia
+            </h1>
+            <p class="text-gray-300 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Melayani perjalanan Umroh amanah, pemesanan tiket penerbangan domestik & internasional, serta pengurusan visa profesional bersama Pimpinan <strong class="text-white font-medium">Muh Ahsan Abdurrahman</strong>.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#paket" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-900 font-bold rounded-xl shadow-xl shadow-gold-500/20 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-kaaba"></i> Lihat Paket Umroh
+                </a>
+                <a href="https://wa.me/628978270092?text=Halo%20Admin%20Altour%20Zayd%20And%20Travel,%20saya%20mau%20konsultasi%20jadwal%20umroh%20dan%20tiket." target="_blank" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/25 border border-white/30 text-white font-bold rounded-xl backdrop-blur-md transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-green-400 text-xl"></i> Konsultasi via WhatsApp
+                </a>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-12 border-t border-white/10 text-left">
+                <div class="bg-navy-800/60 p-4 rounded-xl border border-gold-500/20 backdrop-blur-sm">
+                    <div class="text-gold-400 text-2xl font-bold font-cinzel">Resmi</div>
+                    <div class="text-xs text-gray-300 mt-1">AHU & NIB Terdaftar</div>
+                </div>
+                <div class="bg-navy-800/60 p-4 rounded-xl border border-gold-500/20 backdrop-blur-sm">
+                    <div class="text-gold-400 text-2xl font-bold font-cinzel">Amanah</div>
+                    <div class="text-xs text-gray-300 mt-1">Pelayanan Ibadah Utama</div>
+                </div>
+                <div class="bg-navy-800/60 p-4 rounded-xl border border-gold-500/20 backdrop-blur-sm">
+                    <div class="text-gold-400 text-2xl font-bold font-cinzel">Tiket</div>
+                    <div class="text-xs text-gray-300 mt-1">Domestik & Internasional</div>
+                </div>
+                <div class="bg-navy-800/60 p-4 rounded-xl border border-gold-500/20 backdrop-blur-sm">
+                    <div class="text-gold-400 text-2xl font-bold font-cinzel">Visa</div>
+                    <div class="text-xs text-gray-300 mt-1">Proses Cepat & Mudah</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Kami & Legalitas Section -->
+    <section id="tentang" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-gold-600 font-semibold text-sm tracking-wider uppercase">Tentang Perusahaan</span>
+                    <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-navy-900 mt-2 mb-6">
+                        PT ALTOUR ZAYD AND TRAVEL
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Kami adalah biro perjalanan resmi yang berdedikasi tinggi memberikan pelayanan prima untuk kebutuhan ibadah Umroh Anda, pemesanan tiket penerbangan terpercaya, serta pengurusan dokumen visa dengan standar profesionalisme tertinggi.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Berkomitmen untuk menjadi mitra perjalanan ibadah dan mobilitas global yang aman, nyaman, serta berlandaskan nilai-nilai kejujuran dan kepercayaan.
+                    </p>
+
+                    <!-- Owner Card -->
+                    <div class="bg-navy-900 text-white p-6 rounded-2xl border-l-4 border-gold-500 shadow-xl mb-6">
+                        <div class="text-xs text-gold-400 uppercase tracking-widest font-semibold">Pimpinan / Owner</div>
+                        <div class="font-cinzel text-xl font-bold mt-1">MUH AHSAN ABDURRAHMAN</div>
+                        <p class="text-gray-300 text-sm mt-2">Memimpin langsung operasional dan komitmen kepuasan jamaah serta pelanggan.</p>
+                    </div>
+
+                    <!-- Legal Badge list -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                            <div class="text-xs text-gray-500 font-semibold">NOMOR AHU</div>
+                            <div class="text-navy-900 font-bold text-sm mt-1">AHU-0069557.AH.01.01.TAHUN 2026</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                            <div class="text-xs text-gray-500 font-semibold">NOMOR NIB</div>
+                            <div class="text-navy-900 font-bold text-sm mt-1">2908260029471</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Office / Visual Card -->
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-gold-500 to-navy-900 rounded-3xl opacity-20 blur-xl"></div>
+                    <div class="relative bg-navy-900 text-white rounded-3xl p-8 shadow-2xl border border-gold-500/30">
+                        <div class="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
+                            <div class="w-14 h-14 rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-2xl font-bold">
+                                <i class="fa-solid fa-building-user"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-cinzel font-bold text-lg">Kantor Resmi</h3>
+                                <p class="text-gray-300 text-xs mt-1">Pusat Layanan & Konsultasi</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-location-dot text-gold-400 mt-1"></i>
+                                <div>
+                                    <span class="font-semibold text-white block">Alamat Kantor:</span>
+                                    <span class="text-gray-300">Jl Poros Malino Komp BBPP Batangkaluku</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-phone text-gold-400 mt-1"></i>
+                                <div>
+                                    <span class="font-semibold text-white block">Kontak WhatsApp:</span>
+                                    <span class="text-gray-300">0897-8270-092 (Muh Ahsan Abdurrahman)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fa-solid fa-clock text-gold-400 mt-1"></i>
+                                <div>
+                                    <span class="font-semibold text-white block">Jam Operasional:</span>
+                                    <span class="text-gray-300">Senin - Sabtu: 08.00 - 17.00 WITA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+                            <a href="https://wa.me/628978270092?text=Halo,%20saya%20ingin%20berkunjung%20ke%20kantor%20Altour%20Zayd%20And%20Travel." target="_blank" class="inline-block w-full py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-navy-900 font-bold rounded-xl shadow-lg hover:brightness-110 transition">
+                                <i class="fa-solid fa-map-location-dot mr-1"></i> Buat Janji Kunjungan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Utama Section -->
+    <section id="layanan" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold-600 font-semibold text-sm tracking-wider uppercase">Fasilitas & Solusi</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-navy-900 mt-2 mb-4">
+                    Layanan Unggulan Kami
+                </h2>
+                <p class="text-gray-600">
+                    Kami menyediakan solusi menyeluruh untuk kebutuhan ibadah umroh dan mobilitas perjalanan internasional Anda.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Layanan 1: Umroh -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition border border-gray-200 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-navy-900 text-gold-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-navy-900 transition-colors">
+                            <i class="fa-solid fa-kaaba"></i>
+                        </div>
+                        <h3 class="font-cinzel text-2xl font-bold text-navy-900 mb-3">Travel Umroh</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Perjalanan ibadah umroh dengan bimbingan manasik sesuai sunnah, akomodasi hotel berbintang dekat masjid, serta pembimbing berpengalaman.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> Hotel Bintang 4 & 5</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> Pesawat Full Service</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> Muthawif Profesional</li>
+                        </ul>
+                    </div>
+                    <a href="#paket" class="w-full py-3 bg-navy-900 hover:bg-gold-500 hover:text-navy-900 text-white font-semibold rounded-xl text-center transition">
+                        Pilih Paket Umroh
+                    </a>
+                </div>
+
+                <!-- Layanan 2: Tiket Pesawat -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition border border-gray-200 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-navy-900 text-gold-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-navy-900 transition-colors">
+                            <i class="fa-solid fa-plane-departure"></i>
+                        </div>
+                        <h3 class="font-cinzel text-2xl font-bold text-navy-900 mb-3">Pemesanan Tiket</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Layanan reservasi tiket pesawat domestik maupun internasional dengan harga bersaing, jadwal fleksibel, dan maskapai terpercaya.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> Maskapai Domestik & Internasional</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> Harga Kompetitif</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> Proses Cepat & E-Ticket</li>
+                        </ul>
+                    </div>
+                    <a href="#pemeriksaan" class="w-full py-3 bg-navy-900 hover:bg-gold-500 hover:text-navy-900 text-white font-semibold rounded-xl text-center transition">
+                        Cek & Pesan Tiket
+                    </a>
+                </div>
+
+                <!-- Layanan 3: Visa -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition border border-gray-200 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-16 h-16 rounded-2xl bg-navy-900 text-gold-400 flex items-center justify-center text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-navy-900 transition-colors">
+                            <i class="fa-solid fa-passport"></i>
+                        </div>
+                        <h3 class="font-cinzel text-2xl font-bold text-navy-900 mb-3">Pengurusan Visa</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Pengurusan dokumen visa umroh, turis, maupun bisnis ke berbagai negara dengan proses transparan dan pendampingan dokumen lengkap.
+                        </p>
+                        <ul class="space-y-2 text-sm text-gray-600 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> Visa Umroh & Wisata</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> Konsultasi Berkas</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-600"></i> Terpercaya & Tepat Waktu</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/628978270092?text=Halo%20Altour%20Zayd%20And%20Travel,%20saya%20ingin%20mengurus%20visa." target="_blank" class="w-full py-3 bg-navy-900 hover:bg-gold-500 hover:text-navy-900 text-white font-semibold rounded-xl text-center transition">
+                        Urus Visa Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paket Umroh Section -->
+    <section id="paket" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold-600 font-semibold text-sm tracking-wider uppercase">Pilihan Keberangkatan</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-navy-900 mt-2 mb-4">
+                    Paket Umroh Unggulan
+                </h2>
+                <p class="text-gray-600">
+                    Pilih paket umroh sesuai kebutuhan Anda dengan fasilitas terbaik dan pembimbing profesional.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Paket 1 -->
+                <div class="bg-gray-50 rounded-3xl overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition flex flex-col justify-between">
+                    <div>
+                        <div class="bg-navy-900 text-white p-6 relative">
+                            <span class="absolute top-4 right-4 bg-gold-500 text-navy-900 font-bold text-xs px-3 py-1 rounded-full uppercase">Reguler</span>
+                            <h3 class="font-cinzel text-xl font-bold">Umroh Reguler 9 Hari</h3>
+                            <div class="mt-4 font-cinzel text-3xl font-bold text-gold-400">Rp 28.5 Juta</div>
+                        </div>
+                        <div class="p-6 space-y-4 text-sm text-gray-600">
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-hotel text-gold-600 w-5"></i> Hotel Madinah: Bintang 3/4 Setaraf</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-hotel text-gold-600 w-5"></i> Hotel Makkah: Bintang 3/4 Setaraf</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-plane text-gold-600 w-5"></i> Penerbangan Langsung / Transit</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-utensils text-gold-600 w-5"></i> Konsumsi Fullboard 3x Sehari</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-passport text-gold-600 w-5"></i> Termasuk Visa & Asuransi</div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="https://wa.me/628978270092?text=Halo%20Altour%20Zayd%20And%20Travel,%20saya%20tertarik%20dengan%20Paket%20Umroh%20Reguler%209%20Hari." target="_blank" class="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-900 font-bold rounded-xl text-center block shadow">
+                            Booking via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Paket 2 (Featured) -->
+                <div class="bg-navy-900 text-white rounded-3xl overflow-hidden border-2 border-gold-500 shadow-xl flex flex-col justify-between transform md:-translate-y-2">
+                    <div>
+                        <div class="bg-gold-500 text-navy-900 p-6 relative font-bold">
+                            <span class="absolute top-4 right-4 bg-navy-900 text-gold-400 text-xs px-3 py-1 rounded-full uppercase">Terlaris</span>
+                            <h3 class="font-cinzel text-xl font-bold">Umroh VIP / Plus Madinah</h3>
+                            <div class="mt-4 font-cinzel text-3xl font-bold text-navy-900">Rp 34.5 Juta</div>
+                        </div>
+                        <div class="p-6 space-y-4 text-sm text-gray-300">
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-hotel text-gold-400 w-5"></i> Hotel Madinah: Bintang 5 (Dekat Masjid Nabawi)</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-hotel text-gold-400 w-5"></i> Hotel Makkah: Bintang 5 (Menara Zamzam)</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-plane text-gold-400 w-5"></i> Maskapai Premium (Saudi / Garuda)</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-utensils text-gold-400 w-5"></i> Menu Prasmanan Hotel Mewah</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-bus text-gold-400 w-5"></i> Transportasi Bus Eksekutif AC</div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="https://wa.me/628978270092?text=Halo%20Altour%20Zayd%20And%20Travel,%20saya%20tertarik%20dengan%20Paket%20Umroh%20VIP%20Plus." target="_blank" class="w-full py-3 bg-gradient-to-r from-gold-400 to-gold-600 hover:brightness-110 text-navy-900 font-bold rounded-xl text-center block shadow-lg">
+                            Booking via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Paket 3 -->
+                <div class="bg-gray-50 rounded-3xl overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition flex flex-col justify-between">
+                    <div>
+                        <div class="bg-navy-900 text-white p-6 relative">
+                            <span class="absolute top-4 right-4 bg-gold-500 text-navy-900 font-bold text-xs px-3 py-1 rounded-full uppercase">Ramadhan</span>
+                            <h3 class="font-cinzel text-xl font-bold">Umroh Akhir Ramadhan</h3>
+                            <div class="mt-4 font-cinzel text-3xl font-bold text-gold-400">Rp 42.0 Juta</div>
+                        </div>
+                        <div class="p-6 space-y-4 text-sm text-gray-600">
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-hotel text-gold-600 w-5"></i> Durasi Khusus 13-15 Hari</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-moon text-gold-600 w-5"></i> Rasakan Lailatul Qadar di Haramain</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-plane text-gold-600 w-5"></i> Penerbangan Nyaman</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-utensils text-gold-600 w-5"></i> Sahur & Buka Puasa Termasuk</div>
+                            <div class="flex items-center gap-3"><i class="fa-solid fa-shield-halved text-gold-600 w-5"></i> All-In (Visa, Tiket, Perlengkapan)</div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="https://wa.me/628978270092?text=Halo%20Altour%20Zayd%20And%20Travel,%20saya%20ingin%20info%20Paket%20Umroh%20Akhir%20Ramadhan." target="_blank" class="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-900 font-bold rounded-xl text-center block shadow">
+                            Booking via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Ticket & Visa Inquiry / Check Section -->
+    <section id="pemeriksaan" class="py-20 bg-navy-900 text-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center mb-12">
+                <span class="text-gold-400 font-semibold text-sm tracking-wider uppercase">Layanan Cepat</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-bold mt-2 mb-4">
+                    Form Permintaan Tiket & Visa
+                </h2>
+                <p class="text-gray-300">
+                    Isi formulir di bawah ini untuk mengirimkan detail pemesanan tiket penerbangan atau pengurusan visa langsung ke WhatsApp admin kami.
+                </p>
+            </div>
+
+            <div class="bg-navy-800 p-8 sm:p-10 rounded-3xl border border-gold-500/30 shadow-2xl">
+                <form id="inquiryForm" onsubmit="submitInquiry(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Nama Lengkap</label>
+                            <input type="text" id="fullName" required class="w-full px-4 py-3 bg-navy-900 border border-gray-700 rounded-xl focus:outline-none focus:border-gold-500 text-white placeholder-gray-500" placeholder="Masukkan nama Anda">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Nomor WhatsApp</label>
+                            <input type="tel" id="whatsappNumber" required class="w-full px-4 py-3 bg-navy-900 border border-gray-700 rounded-xl focus:outline-none focus:border-gold-500 text-white placeholder-gray-500" placeholder="Contoh: 08123456789">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Jenis Layanan</label>
+                            <select id="serviceType" class="w-full px-4 py-3 bg-navy-900 border border-gray-700 rounded-xl focus:outline-none focus:border-gold-500 text-white">
+                                <option value="Pemesanan Tiket Pesawat">Pemesanan Tiket Pesawat</option>
+                                <option value="Pengurusan Visa Umroh / Turis">Pengurusan Visa Umroh / Turis</option>
+                                <option value="Konsultasi Paket Umroh">Konsultasi Paket Umroh</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Rencana Tanggal / Detail</label>
+                            <input type="text" id="travelDetail" required class="w-full px-4 py-3 bg-navy-900 border border-gray-700 rounded-xl focus:outline-none focus:border-gold-500 text-white placeholder-gray-500" placeholder="Misal: Rute Jakarta-Jeddah atau Tanggal Berangkat">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Catatan Tambahan</label>
+                        <textarea id="additionalNotes" rows="3" class="w-full px-4 py-3 bg-navy-900 border border-gray-700 rounded-xl focus:outline-none focus:border-gold-500 text-white placeholder-gray-500" placeholder="Tuliskan jumlah orang atau permintaan khusus..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-900 font-bold rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-base">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Kirim Permintaan ke WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="kontak" class="bg-navy-900 text-gray-400 border-t border-gold-500/20 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Col 1 -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-gold-500 text-navy-900 flex items-center justify-center font-cinzel font-bold text-lg">
+                            AZ
+                        </div>
+                        <div>
+                            <h3 class="font-cinzel font-bold text-white text-base">ALTOUR</h3>
+                            <p class="text-[10px] text-gold-400 tracking-widest uppercase">Zayd And Travel</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">
+                        Mitra perjalanan ibadah umroh, tiket penerbangan, dan pengurusan visa terpercaya dan resmi di bawah kepemimpinan Muh Ahsan Abdurrahman.
+                    </p>
+                    <div class="text-xs text-gold-400">
+                        <p>AHU: AHU-0069557.AH.01.01.TAHUN 2026</p>
+                        <p class="mt-1">NIB: 2908260029471</p>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-cinzel font-bold text-white text-lg mb-4">Menu Cepat</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#beranda" class="hover:text-gold-400 transition">Beranda</a></li>
+                        <li><a href="#tentang" class="hover:text-gold-400 transition">Tentang Kami</a></li>
+                        <li><a href="#layanan" class="hover:text-gold-400 transition">Layanan & Fasilitas</a></li>
+                        <li><a href="#paket" class="hover:text-gold-400 transition">Paket Umroh</a></li>
+                        <li><a href="#pemeriksaan" class="hover:text-gold-400 transition">Tiket & Visa</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-cinzel font-bold text-white text-lg mb-4">Kontak Kami</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-gold-400 mt-1"></i>
+                            <span>Jl Poros Malino Komp BBPP Batangkaluku</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-gold-400"></i>
+                            <span>0897-8270-092 (Muh Ahsan Abdurrahman)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-cinzel font-bold text-white text-lg mb-4">Jam Layanan</h4>
+                    <p class="text-sm text-gray-400 mb-4">
+                        Tim kami siap melayani pertanyaan dan konsultasi perjalanan Anda setiap hari kerja.
+                    </p>
+                    <div class="p-4 bg-navy-800 rounded-xl border border-gold-500/20 text-sm">
+                        <span class="text-white font-medium block">Senin - Sabtu:</span>
+                        <span class="text-gold-400">08.00 - 17.00 WITA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+                <p>&copy; 2026 PT ALTOUR ZAYD AND TRAVEL. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <span class="text-gold-400">Pimpinan: Muh Ahsan Abdurrahman</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/628978270092?text=Halo%20PT%20Altour%20Zayd%20And%20Travel,%20saya%20ingin%20bertanya%20mengenai%20layanan%20travel." target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Script Interaktif -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Custom Modal Function (replaces alert)
+        function showModal(title, message, isSuccess = true) {
+            const modal = document.getElementById('customModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+            const modalIcon = document.getElementById('modalIcon');
+            const modalContent = document.getElementById('modalContent');
+
+            modalTitle.innerText = title;
+            modalMessage.innerText = message;
+            
+            if (isSuccess) {
+                modalIcon.className = "fa-solid fa-circle-check text-green-500";
+            } else {
+                modalIcon.className = "fa-solid fa-circle-exclamation text-amber-500";
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('customModal');
+            const modalContent = document.getElementById('modalContent');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        // Handle Inquiry Form Submission
+        function submitInquiry(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('fullName').value.trim();
+            const phone = document.getElementById('whatsappNumber').value.trim();
+            const service = document.getElementById('serviceType').value;
+            const detail = document.getElementById('travelDetail').value.trim();
+            const notes = document.getElementById('additionalNotes').value.trim();
+
+            const waMessage = `Halo Admin PT Altour Zayd And Travel,\n\nSaya ingin mengajukan permohonan/konsultasi layanan:\n*Nama:* ${name}\n*No WhatsApp:* ${phone}\n*Jenis Layanan:* ${service}\n*Detail:* ${detail}\n*Catatan:* ${notes || '-'}\n\nMohon informasinya lebih lanjut. Terima kasih.`;
+            
+            const encodedMessage = encodeURIComponent(waMessage);
+            const waUrl = `https://wa.me/628978270092?text=${encodedMessage}`;
+
+            showModal("Berhasil Diproses!", "Anda akan diarahkan langsung ke WhatsApp resmi PT Altour Zayd And Travel untuk mengirimkan pesan.");
+            
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
